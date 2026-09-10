@@ -1,0 +1,272 @@
+/* Loaded by Home only. The original site's shared styles stay independent. */
+body {
+  margin: 0;
+}
+
+.teachers-cover {
+  --cover-progress: 0;
+  --cover-opacity: 1;
+  --copy-opacity: 1;
+  --wash-opacity: 1;
+  --pointer-x: 0;
+  --pointer-y: 0;
+  position: relative;
+  height: 100vh;
+  height: 100svh;
+  background: #fff;
+  color: #1d1d1f;
+  font-family: -apple-system, BlinkMacSystemFont, "Helvetica Neue", "PingFang SC", "Microsoft YaHei", sans-serif;
+}
+
+.teachers-cover.is-enhanced {
+  height: 145vh;
+  height: 145svh;
+}
+
+.teachers-cover__stage {
+  position: sticky;
+  top: 0;
+  height: 100vh;
+  height: 100svh;
+  min-height: 360px;
+  overflow: hidden;
+  display: grid;
+  place-items: center;
+  isolation: isolate;
+  background: #fff;
+}
+
+.teachers-cover__stage::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  z-index: -1;
+  pointer-events: none;
+  opacity: var(--wash-opacity);
+  background:
+    radial-gradient(ellipse at 12% 0%, rgb(210 216 247 / 55%), transparent 56%),
+    radial-gradient(ellipse at 88% 8%, rgb(204 229 246 / 65%), transparent 53%),
+    linear-gradient(180deg, #edf0f6 0%, #f5f7fa 36%, #fff 85%);
+}
+
+.teachers-cover__masthead {
+  position: absolute;
+  inset: 0 0 auto;
+  z-index: 2;
+  padding: 30px 44px;
+  opacity: var(--copy-opacity);
+  pointer-events: none;
+}
+
+.teachers-cover__brand {
+  display: inline-block;
+  width: 112px;
+  pointer-events: auto;
+}
+
+.teachers-cover__brand img {
+  display: block;
+  width: 100%;
+  height: auto;
+}
+
+.teachers-cover__composition {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: clamp(16px, 2.8vh, 30px);
+  width: 100%;
+  padding-top: 36px;
+}
+
+.teachers-cover__heart {
+  width: min(1120px, 96vw, 100vh);
+  width: min(1120px, 96vw, 100svh);
+  aspect-ratio: 1000 / 650;
+  position: relative;
+  opacity: var(--cover-opacity);
+  transform: translate3d(0, calc(var(--cover-progress) * -36px), 0) scale(calc(1 + var(--cover-progress) * .08));
+}
+
+.teachers-cover__mosaic {
+  position: absolute;
+  inset: 0;
+}
+
+.teachers-cover__photo {
+  --depth: 15px;
+  --rotation: 0deg;
+  --drift-x: 0%;
+  --drift-y: 0%;
+  position: absolute;
+  left: var(--x);
+  top: var(--y);
+  width: var(--w);
+  height: var(--h);
+  z-index: var(--layer, 1);
+  transform:
+    translate3d(
+      calc(-50% + var(--cover-progress) * var(--drift-x) + var(--pointer-x) * var(--depth)),
+      calc(-50% + var(--cover-progress) * var(--drift-y) + var(--pointer-y) * var(--depth)),
+      0)
+    rotate(calc(var(--rotation) + var(--cover-progress) * var(--rotation) * .6));
+}
+
+.teachers-cover__frame {
+  width: 100%;
+  height: 100%;
+  box-sizing: border-box;
+  overflow: hidden;
+  border: 3px solid rgb(255 255 255 / 95%);
+  border-radius: 11px;
+  background: #e8ebef;
+  box-shadow:
+    0 24px 45px -18px rgb(24 37 60 / 30%),
+    0 5px 14px -5px rgb(24 37 60 / 16%),
+    0 0 0 1px rgb(38 53 75 / 4%);
+  animation: teachers-photo-arrive 1.65s cubic-bezier(.16, 1, .3, 1) var(--delay) both;
+}
+
+.teachers-cover__photo img {
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: var(--position, center);
+}
+
+.teachers-cover__message {
+  opacity: var(--copy-opacity);
+  transform: translate3d(0, calc(var(--cover-progress) * -32px), 0);
+}
+
+.teachers-cover__quote {
+  margin: 0;
+  color: #626775;
+  font-family: "Songti SC", "STSong", "Noto Serif CJK SC", "Source Han Serif SC", SimSun, serif;
+  font-size: clamp(17px, 1.5vw, 20px);
+  font-weight: 400;
+  line-height: 1.8;
+  letter-spacing: .22em;
+  text-indent: .22em;
+  animation: teachers-copy-arrive 1.5s cubic-bezier(.16, 1, .3, 1) .65s both;
+}
+
+.teachers-cover__scroll {
+  position: absolute;
+  bottom: 25px;
+  left: calc(50% - 22px);
+  width: 44px;
+  height: 44px;
+  display: grid;
+  place-items: center;
+  color: #868b95;
+  opacity: var(--copy-opacity);
+  border: 1px solid #e5e7eb;
+  border-radius: 50%;
+  box-sizing: border-box;
+  transition: color .2s, border-color .2s, background .2s;
+}
+
+.teachers-cover__scroll:hover {
+  color: #1d1d1f;
+  background: #f5f5f7;
+  border-color: #bfc5cf;
+}
+
+.teachers-cover a:focus-visible {
+  outline: 2px solid #59759c;
+  outline-offset: 5px;
+}
+
+.home-content {
+  position: relative;
+  display: flow-root;
+  padding: 8px;
+  background: #fff;
+}
+
+.home-content:focus {
+  outline: none;
+}
+
+@keyframes teachers-photo-arrive {
+  from {
+    opacity: 0;
+    transform: translate3d(calc(var(--drift-x) * -.35), calc(45px + var(--drift-y) * -.35), 0) scale(.86) rotate(calc(var(--rotation) * -.7));
+  }
+  to { opacity: 1; transform: translate3d(0, 0, 0) scale(1) rotate(0deg); }
+}
+
+@keyframes teachers-copy-arrive {
+  from { opacity: 0; transform: translateY(12px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+/* Fit the existing Home tables to phones without changing the other pages. */
+@media (max-width: 920px) {
+  .home-content > table {
+    width: 100%;
+    max-width: 900px;
+  }
+
+  .home-content > table:not(:first-child) {
+    max-width: 850px;
+  }
+}
+
+@media (max-width: 600px) {
+  .teachers-cover__masthead { padding: 24px; }
+  .teachers-cover__brand { width: 86px; }
+  .teachers-cover__composition { gap: 28px; padding-top: 0; }
+  .teachers-cover__heart { width: 98vw; }
+  .teachers-cover__frame { border-width: 1.5px; border-radius: 6px; }
+  .teachers-cover__scroll { bottom: 28px; }
+
+  .home-content > table:first-child tr {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: center;
+    padding-bottom: 16px;
+  }
+
+  .home-content > table:first-child td {
+    width: auto !important;
+    padding: 8px !important;
+  }
+
+  .home-content > table:first-child td:first-child {
+    flex-basis: 100%;
+    text-align: center;
+  }
+
+  .home-content > table:first-child img {
+    height: 70px;
+  }
+
+  .home-content > table:first-child a {
+    font-size: 14px !important;
+  }
+}
+
+@media (max-height: 700px) and (min-width: 601px) {
+  .teachers-cover__heart { width: min(88vh, 96vw); }
+}
+
+@media (max-height: 540px) and (min-width: 601px) {
+  .teachers-cover__masthead { padding-top: 18px; }
+  .teachers-cover__brand { width: 86px; }
+  .teachers-cover__heart { width: min(82vh, 580px); }
+  .teachers-cover__composition { gap: 10px; padding-top: 0; }
+  .teachers-cover__scroll { bottom: 12px; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .teachers-cover.is-enhanced { height: 100svh; }
+  .teachers-cover__stage { position: relative; }
+  .teachers-cover__frame,
+  .teachers-cover__quote { animation: none; }
+  .teachers-cover__heart,
+  .teachers-cover__message { transform: none; opacity: 1; }
+}
