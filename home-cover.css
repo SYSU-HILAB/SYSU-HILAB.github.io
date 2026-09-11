@@ -135,23 +135,6 @@ body {
   object-position: var(--position, center);
 }
 
-.teachers-cover__message {
-  opacity: var(--copy-opacity);
-  transform: translate3d(0, calc(var(--cover-progress) * -32px), 0);
-}
-
-.teachers-cover__quote {
-  margin: 0;
-  color: #626775;
-  font-family: "Songti SC", "STSong", "Noto Serif CJK SC", "Source Han Serif SC", SimSun, serif;
-  font-size: clamp(17px, 1.5vw, 20px);
-  font-weight: 400;
-  line-height: 1.8;
-  letter-spacing: .22em;
-  text-indent: .22em;
-  animation: teachers-copy-arrive 1.5s cubic-bezier(.16, 1, .3, 1) .65s both;
-}
-
 .teachers-cover__scroll {
   position: absolute;
   bottom: 25px;
@@ -196,11 +179,6 @@ body {
     transform: translate3d(calc(var(--drift-x) * -.35), calc(45px + var(--drift-y) * -.35), 0) scale(.86) rotate(calc(var(--rotation) * -.7));
   }
   to { opacity: 1; transform: translate3d(0, 0, 0) scale(1) rotate(0deg); }
-}
-
-@keyframes teachers-copy-arrive {
-  from { opacity: 0; transform: translateY(12px); }
-  to { opacity: 1; transform: translateY(0); }
 }
 
 /* Fit the existing Home tables to phones without changing the other pages. */
@@ -265,8 +243,6 @@ body {
 @media (prefers-reduced-motion: reduce) {
   .teachers-cover.is-enhanced { height: 100svh; }
   .teachers-cover__stage { position: relative; }
-  .teachers-cover__frame,
-  .teachers-cover__quote { animation: none; }
-  .teachers-cover__heart,
-  .teachers-cover__message { transform: none; opacity: 1; }
+  .teachers-cover__frame { animation: none; }
+  .teachers-cover__heart { transform: none; opacity: 1; }
 }
